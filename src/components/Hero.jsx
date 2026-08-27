@@ -69,36 +69,37 @@ function Hero() {
                 <i />
                 <i />
               </div>
-              <div className="absolute bottom-6 left-6 right-6 z-10 grid gap-2">
-                <div className="grid grid-cols-3 gap-2">
-                  {portraitLinks.map((portraitLink) => {
+              <div className="absolute bottom-6 left-6 right-6 z-10">
+                {/* Barra unica segmentada: tres botones sueltos dejaban el icono
+                    ocupando un 8% del area y se leian vacios. */}
+                <div className="flex overflow-hidden rounded-[1rem] border border-white/[0.12] bg-slate-950/[0.42] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
+                  {portraitLinks.map((portraitLink, index) => {
                     const IconComponent = portraitLink.icon
                     const { label, link, brand } = portraitLink
                     const isActive = Boolean(link?.href)
                     const isExternal = link?.href && !link.href.startsWith('mailto:')
-                    const brandClassNames = {
-                      email:
-                        'border-red-200/[0.16] bg-slate-950/[0.38] text-[#EA4335] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(234,67,53,0.08)]',
-                      linkedin:
-                        'border-sky-300/[0.18] bg-slate-950/[0.38] text-[#4DA3FF] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(10,102,194,0.1)]',
-                      instagram:
-                        'border-fuchsia-200/[0.16] bg-slate-950/[0.38] text-[#E1306C] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(214,36,159,0.09)]',
+                    const brandTone = {
+                      email: 'text-[#EA4335]',
+                      linkedin: 'text-[#4DA3FF]',
+                      instagram: 'text-[#E1306C]',
                     }
-                    const brandHoverClassNames = {
+                    const brandHover = {
                       email: 'hover:text-[#FF6B5E]',
                       linkedin: 'hover:text-[#7CC0FF]',
                       instagram: 'hover:text-[#F2568F]',
                     }
-                    const className = `flex h-9 items-center justify-center rounded-[0.85rem] border ring-1 ring-white/[0.04] backdrop-blur-md transition duration-300 ${brandClassNames[brand]} ${
+                    const className = `flex h-11 flex-1 items-center justify-center transition duration-300 ${
+                      index > 0 ? 'border-l border-white/10' : ''
+                    } ${brandTone[brand]} ${
                       isActive
-                        ? `hover:-translate-y-0.5 hover:scale-[1.03] ${brandHoverClassNames[brand]}`
+                        ? `hover:bg-white/[0.06] ${brandHover[brand]}`
                         : 'cursor-default opacity-55'
                     }`
 
                     if (!isActive) {
                       return (
                         <span key={label} className={className}>
-                          {createElement(IconComponent, { className: 'h-4 w-4' })}
+                          {createElement(IconComponent, { className: 'h-5 w-5' })}
                         </span>
                       )
                     }
@@ -113,7 +114,7 @@ function Hero() {
                         title={label}
                         className={className}
                       >
-                        {createElement(IconComponent, { className: 'h-4 w-4' })}
+                        {createElement(IconComponent, { className: 'h-5 w-5' })}
                       </a>
                     )
                   })}
