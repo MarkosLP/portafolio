@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Notas de trabajo personales
+CONTINUAR_MANANA.md

@@ -1,0 +1,7 @@
+# Normaliza finales de linea: LF en el repo y en el arbol de trabajo.
+* text=auto eol=lf
+
+# Binarios: sin conversion.
+*.jpg binary
+*.png binary
+*.ico binary
