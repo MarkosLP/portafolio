@@ -17,8 +17,8 @@ export const profile = {
   contactLinks: [
     {
       label: 'Email',
-      value: 'marc19.lopez@gmail.com',
-      href: 'mailto:marc19.lopez@gmail.com',
+      value: 'marc.77.lopez@gmail.com',
+      href: 'mailto:marc.77.lopez@gmail.com',
       icon: 'mail',
     },
     {

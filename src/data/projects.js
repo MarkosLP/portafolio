@@ -27,7 +27,7 @@ export const projects = [
     name: 'Generador de Horarios de Trabajo',
     year: '2026',
     description:
-      'Aplicación para gestionar turnos y horarios en gasolineras, con foco en organización diaria y control rápido del equipo.',
+      'Aplicación para generar y gestionar turnos y horarios de trabajo, con foco en organización diaria y control rápido del equipo.',
     technologies: ['React', 'Tailwind CSS', 'Gestión interna', 'Calendario'],
     image: null,
     visual: 'shifts',
