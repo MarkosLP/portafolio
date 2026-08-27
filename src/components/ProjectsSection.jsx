@@ -20,8 +20,8 @@ function ProjectsSection() {
         </div>
 
         <div className="max-w-3xl text-sm leading-7 text-sky-100/[0.58]">
-          Los enlaces y capturas de cada proyecto se añadirán aquí cuando estén
-          listos para publicar.
+          Los enlaces y capturas del resto de proyectos se añadirán aquí cuando
+          estén listos para publicar.
         </div>
       </div>
     </section>

@@ -1,10 +1,27 @@
 import { ArrowUpRight, CalendarDays, Github, Globe2, Store } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+// Cada proyecto tiene un tono propio para que las filas no se lean iguales en
+// reposo. El acento ya existía, pero solo aparecía como hairline al hacer hover.
 const visualMeta = {
-  web: { icon: Globe2, accent: 'from-cyan-200/60' },
-  store: { icon: Store, accent: 'from-violet-200/60' },
-  shifts: { icon: CalendarDays, accent: 'from-emerald-200/60' },
+  web: {
+    icon: Globe2,
+    accent: 'from-cyan-200/60',
+    tone: 'text-cyan-200/70',
+    toneHover: 'group-hover:text-cyan-200',
+  },
+  store: {
+    icon: Store,
+    accent: 'from-violet-200/60',
+    tone: 'text-violet-200/70',
+    toneHover: 'group-hover:text-violet-200',
+  },
+  shifts: {
+    icon: CalendarDays,
+    accent: 'from-emerald-200/60',
+    tone: 'text-emerald-200/70',
+    toneHover: 'group-hover:text-emerald-200',
+  },
 }
 
 function ProjectRow({ project, index }) {
@@ -36,7 +53,9 @@ function ProjectRow({ project, index }) {
 
       <div className="relative flex flex-col gap-5 px-1 py-8 md:flex-row md:items-center md:gap-8 md:py-9">
         <div className="flex shrink-0 items-center gap-4">
-          <span className="font-display text-[0.95rem] tabular-nums text-slate-500 transition-colors duration-500 group-hover:text-sky-200/80">
+          <span
+            className={`font-display text-[0.95rem] tabular-nums transition-colors duration-500 ${meta.tone} ${meta.toneHover}`}
+          >
             {String(index + 1).padStart(2, '0')}
           </span>
 
@@ -48,7 +67,9 @@ function ProjectRow({ project, index }) {
               className="h-14 w-20 rounded-[0.75rem] border border-white/10 object-cover"
             />
           ) : (
-            <span className="flex h-12 w-12 items-center justify-center rounded-[0.95rem] border border-white/10 bg-white/[0.045] text-sky-100/80 transition duration-500 group-hover:border-white/20 group-hover:bg-white/[0.08] group-hover:text-sky-100">
+            <span
+              className={`flex h-12 w-12 items-center justify-center rounded-[0.95rem] border border-white/10 bg-white/[0.045] transition duration-500 group-hover:border-white/20 group-hover:bg-white/[0.08] ${meta.tone} ${meta.toneHover}`}
+            >
               <Icon className="h-5 w-5" />
             </span>
           )}

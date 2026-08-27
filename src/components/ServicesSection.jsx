@@ -13,7 +13,7 @@ function ServicesSection() {
   const MotionDiv = motion.div
 
   return (
-    <section id="servicios" className="relative scroll-mt-24 pb-8 pt-4">
+    <section id="servicios" className="relative scroll-mt-24">
       <div className="absolute left-1/2 top-0 -z-10 h-full w-screen -translate-x-1/2 bg-[radial-gradient(circle_at_72%_30%,rgba(125,211,252,0.08),transparent_30%)]" />
       <div className="flex flex-col gap-9">
         <SectionHeading

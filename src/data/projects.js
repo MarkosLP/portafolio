@@ -1,3 +1,5 @@
+import weben1minShot from '../assets/weben1min.jpg'
+
 export const projects = [
   {
     name: 'Web en 1 Min',
@@ -5,9 +7,9 @@ export const projects = [
     description:
       'Herramienta para crear una web sencilla en muy poco tiempo, pensada para convertir una idea en una primera presencia online usable.',
     technologies: ['React', 'Tailwind CSS', 'IA aplicada', 'Vite'],
-    image: null,
+    image: weben1minShot,
     visual: 'web',
-    demoUrl: null,
+    demoUrl: 'https://weben1min.vercel.app/',
     repoUrl: null,
     status: 'En desarrollo',
   },

@@ -73,7 +73,6 @@ function App() {
         >
           <Hero />
           <ProjectsSection />
-          <SectionDivider />
           <AboutSection />
           <SectionDivider />
           <ServicesSection />

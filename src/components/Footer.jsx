@@ -1,8 +1,9 @@
-import { ArrowUp } from 'lucide-react'
+import { ArrowUp, Mail } from 'lucide-react'
 import { navItems, profile } from '../data/site'
 
 function Footer() {
   const year = new Date().getFullYear()
+  const emailHref = profile.contactLinks.find((link) => link.icon === 'mail')?.href
 
   return (
     <footer className="relative border-t border-white/10 pt-10">
@@ -33,13 +34,22 @@ function Footer() {
         <p className="text-[0.82rem] text-slate-500">
           © {year} {profile.name}
         </p>
-        <a
-          href="#inicio"
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[0.82rem] text-slate-300 transition duration-300 hover:border-white/25 hover:bg-white/[0.07] hover:text-white"
-        >
-          Volver arriba
-          <ArrowUp className="h-3.5 w-3.5" />
-        </a>
+        <div className="flex flex-wrap items-center gap-3">
+          <a
+            href={emailHref}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[0.82rem] text-slate-300 transition duration-300 hover:border-white/25 hover:bg-white/[0.07] hover:text-white"
+          >
+            Escríbeme
+            <Mail className="h-3.5 w-3.5" />
+          </a>
+          <a
+            href="#inicio"
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[0.82rem] text-slate-300 transition duration-300 hover:border-white/25 hover:bg-white/[0.07] hover:text-white"
+          >
+            Volver arriba
+            <ArrowUp className="h-3.5 w-3.5" />
+          </a>
+        </div>
       </div>
     </footer>
   )
