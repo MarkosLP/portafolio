@@ -23,8 +23,8 @@ export const profile = {
     },
     {
       label: 'GitHub',
-      value: 'github.com/tuusuario',
-      href: 'https://github.com/tuusuario',
+      value: 'github.com/MarkosLP',
+      href: 'https://github.com/MarkosLP',
       icon: 'github',
     },
     {

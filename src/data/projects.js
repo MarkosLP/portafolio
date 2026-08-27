@@ -24,7 +24,7 @@ export const projects = [
     status: 'En desarrollo',
   },
   {
-    name: 'Febrer Gasolineras',
+    name: 'Generador de Horarios de Trabajo',
     year: '2026',
     description:
       'Aplicación para gestionar turnos y horarios en gasolineras, con foco en organización diaria y control rápido del equipo.',
