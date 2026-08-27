@@ -77,14 +77,23 @@ function Hero() {
                     const isExternal = link?.href && !link.href.startsWith('mailto:')
                     const brandClassNames = {
                       email:
-                        'border-red-200/[0.16] bg-slate-950/[0.38] text-red-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(234,67,53,0.08)]',
+                        'border-[#EA4335]/40 bg-[#EA4335]/20 text-red-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(234,67,53,0.18)]',
                       linkedin:
-                        'border-sky-300/[0.18] bg-slate-950/[0.38] text-sky-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(10,102,194,0.1)]',
+                        'border-[#0A66C2]/45 bg-[#0A66C2]/25 text-sky-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(10,102,194,0.2)]',
                       instagram:
-                        'border-fuchsia-200/[0.16] bg-slate-950/[0.38] text-fuchsia-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(214,36,159,0.09)]',
+                        'border-[#E1306C]/40 bg-[#E1306C]/20 text-pink-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_24px_rgba(225,48,108,0.18)]',
                     }
-                    const className = `flex h-9 items-center justify-center rounded-[0.85rem] border ring-1 ring-white/[0.04] backdrop-blur-md transition ${brandClassNames[brand]} ${
-                      isActive ? 'hover:-translate-y-0.5 hover:scale-[1.03]' : 'cursor-default opacity-55'
+                    const brandHoverClassNames = {
+                      email: 'hover:border-[#EA4335]/65 hover:bg-[#EA4335]/35 hover:text-red-100',
+                      linkedin:
+                        'hover:border-[#0A66C2]/70 hover:bg-[#0A66C2]/40 hover:text-sky-100',
+                      instagram:
+                        'hover:border-[#E1306C]/65 hover:bg-[#E1306C]/35 hover:text-pink-100',
+                    }
+                    const className = `flex h-9 items-center justify-center rounded-[0.85rem] border ring-1 ring-white/[0.04] backdrop-blur-md transition duration-300 ${brandClassNames[brand]} ${
+                      isActive
+                        ? `hover:-translate-y-0.5 hover:scale-[1.03] ${brandHoverClassNames[brand]}`
+                        : 'cursor-default opacity-55'
                     }`
 
                     if (!isActive) {
