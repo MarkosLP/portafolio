@@ -19,6 +19,7 @@ function splitHeadline({ headline, headlineAccent }) {
 function Hero() {
   const MotionDiv = motion.div
   const { lead, accent, trail } = splitHeadline(profile)
+  const emailHref = profile.contactLinks.find((link) => link.icon === 'mail')?.href
   const portraitLinks = [
     {
       label: 'Email',
@@ -176,12 +177,12 @@ function Hero() {
             <ArrowRight className="h-4 w-4" />
           </motion.a>
           <motion.a
-            href="#contacto"
+            href={emailHref}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.99 }}
             className="inline-flex min-w-[12rem] items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-7 py-3.5 text-sm font-semibold text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.08]"
           >
-            Contacto
+            Escríbeme
             <Mail className="h-4 w-4" />
           </motion.a>
         </MotionDiv>

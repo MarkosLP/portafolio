@@ -2,7 +2,7 @@ export const navItems = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Sobre mí', href: '#sobre-mi' },
-  { label: 'Contacto', href: '#contacto' },
+  { label: 'Servicios', href: '#servicios' },
 ]
 
 export const profile = {
@@ -60,6 +60,33 @@ export const aboutContent = {
       icon: 'layers',
       title: 'IA con sentido',
       text: 'Uso IA cuando ayuda a automatizar, crear o simplificar una experiencia concreta.',
+    },
+  ],
+}
+
+export const servicesContent = {
+  eyebrow: 'Servicios',
+  title: 'En qué puedo ayudar.',
+  description:
+    'Tres formas de trabajar juntos. Cada una tiene ya un proyecto propio detrás, así que no es una lista de intenciones.',
+  services: [
+    {
+      icon: 'web',
+      title: 'Webs y landings',
+      text: 'De una idea a una web usable en poco tiempo: clara de leer, rápida de cargar y fácil de mantener.',
+      project: 'Web en 1 Min',
+    },
+    {
+      icon: 'ai',
+      title: 'Automatización con IA',
+      text: 'Tareas repetitivas resueltas con IA donde aporta algo medible, no por ponerle la etiqueta.',
+      project: 'Walle AI',
+    },
+    {
+      icon: 'internal',
+      title: 'Herramientas internas',
+      text: 'Turnos, horarios y control de equipo: aplicaciones pensadas para el trabajo del día a día.',
+      project: 'Generador de Horarios de Trabajo',
     },
   ],
 }

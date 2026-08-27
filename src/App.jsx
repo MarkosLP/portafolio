@@ -1,10 +1,10 @@
 import AboutSection from './components/AboutSection'
-import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import ProjectsSection from './components/ProjectsSection'
 import SectionDivider from './components/SectionDivider'
+import ServicesSection from './components/ServicesSection'
 import backgroundPpal from './assets/backgroundppal.jpg'
 
 function App() {
@@ -76,7 +76,7 @@ function App() {
           <SectionDivider />
           <AboutSection />
           <SectionDivider />
-          <ContactSection />
+          <ServicesSection />
           <Footer />
         </main>
       </div>
