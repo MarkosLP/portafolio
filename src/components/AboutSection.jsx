@@ -10,11 +10,16 @@ const highlightIcons = {
 
 function AboutSection() {
   const MotionDiv = motion.div
+  const MotionSection = motion.section
 
   return (
-    <section
+    <MotionSection
       id="sobre-mi"
-      className="grid scroll-mt-24 gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start"
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.22 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="grid scroll-mt-24 gap-8 sm:gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start"
     >
       <div>
         <SectionHeading
@@ -22,7 +27,7 @@ function AboutSection() {
           title={aboutContent.title}
           description={aboutContent.description}
         />
-        <p className="mt-5 max-w-2xl text-[0.98rem] leading-8 text-slate-300/[0.78]">
+        <p className="mt-5 max-w-2xl text-[0.96rem] leading-7 text-slate-300/[0.78] sm:text-[0.98rem] sm:leading-8">
           {aboutContent.note}
         </p>
       </div>
@@ -38,7 +43,8 @@ function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.42, delay: index * 0.06 }}
-              className="rounded-[1.35rem] border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_40px_rgba(2,6,23,0.12)] backdrop-blur-xl"
+              whileHover={{ y: -2 }}
+              className="rounded-[1.35rem] border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_40px_rgba(2,6,23,0.12)] backdrop-blur-xl transition-colors duration-500 hover:border-white/15 hover:bg-white/[0.06]"
             >
               <div className="flex items-start gap-4">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.9rem] border border-sky-300/15 bg-sky-300/10 text-sky-200">
@@ -66,7 +72,7 @@ function AboutSection() {
           ))}
         </div>
       </div>
-    </section>
+    </MotionSection>
   )
 }
 

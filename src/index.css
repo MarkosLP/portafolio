@@ -127,6 +127,7 @@ p {
   mix-blend-mode: screen;
   transform: rotate(7deg);
   transform-origin: left top;
+  animation: lampBreath 11s ease-in-out infinite;
 }
 
 /* Las capas ambientales se posicionan en % dentro de .site-backdrop-frame, cuyo
@@ -166,53 +167,7 @@ p {
   clip-path: polygon(6% 5%, 78% 0, 96% 100%, 0 96%);
   mix-blend-mode: screen;
   transform: perspective(34rem) rotateY(8deg) skewY(-1deg);
-  animation: windowGlow 7.5s ease-in-out infinite;
-}
-
-/* Vapor de la taza. El origen (56.3%, 53%) es el borde de la taza medido sobre
-   la imagen; translate(-50%, -100%) hace que la columna nazca ahí y suba. */
-.site-cup-steam {
-  position: absolute;
-  left: 56.3%;
-  top: 53%;
-  width: 7.5%;
-  height: 15%;
-  transform: translate(-50%, -100%);
-  opacity: 0.58;
-  filter: blur(7px);
-  mix-blend-mode: screen;
-}
-
-.site-cup-steam i {
-  position: absolute;
-  bottom: 0;
-  width: 38%;
-  height: 100%;
-  border-radius: 46% 54% 42% 58%;
-  background: linear-gradient(
-    to top,
-    rgba(226, 246, 255, 0) 0%,
-    rgba(236, 250, 255, 0.6) 24%,
-    rgba(214, 240, 255, 0.38) 56%,
-    rgba(226, 246, 255, 0) 100%
-  );
-  transform-origin: 50% 100%;
-  will-change: transform, opacity;
-}
-
-.site-cup-steam i:nth-child(1) {
-  left: 6%;
-  animation: steamWispA 6.6s ease-in-out infinite;
-}
-
-.site-cup-steam i:nth-child(2) {
-  left: 31%;
-  animation: steamWispB 7.8s ease-in-out infinite 1.2s;
-}
-
-.site-cup-steam i:nth-child(3) {
-  left: 56%;
-  animation: steamWispC 7.1s ease-in-out infinite 2.4s;
+  animation: windowGlow 12s ease-in-out infinite;
 }
 
 /* Capas vivas de la ciudad, el monitor y el altavoz. Todas van en % dentro de
@@ -353,15 +308,28 @@ p {
 @keyframes windowGlow {
   0%,
   100% {
-    opacity: 0.24;
+    opacity: 0.22;
   }
 
-  45% {
-    opacity: 0.4;
+  38% {
+    opacity: 0.34;
   }
 
-  62% {
-    opacity: 0.28;
+  68% {
+    opacity: 0.26;
+  }
+}
+
+@keyframes lampBreath {
+  0%,
+  100% {
+    opacity: 0.44;
+    transform: rotate(7deg) scale(0.98);
+  }
+
+  48% {
+    opacity: 0.6;
+    transform: rotate(7deg) scale(1.02);
   }
 }
 

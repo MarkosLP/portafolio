@@ -40,6 +40,7 @@ function ProjectRow({ project, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.45, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ y: -2 }}
       className="group relative border-t border-white/10 last:border-b"
     >
       <div
@@ -51,7 +52,7 @@ function ProjectRow({ project, index }) {
         className={`pointer-events-none absolute inset-x-0 top-[-1px] h-px bg-gradient-to-r to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${meta.accent}`}
       />
 
-      <div className="relative flex flex-col gap-5 px-1 py-8 md:flex-row md:items-center md:gap-8 md:py-9">
+      <div className="relative flex flex-col gap-5 px-1 py-7 md:flex-row md:items-center md:gap-8 md:py-9">
         <div className="flex shrink-0 items-center gap-4">
           <span
             className={`font-display text-[0.95rem] tabular-nums transition-colors duration-500 ${meta.tone} ${meta.toneHover}`}
@@ -64,26 +65,26 @@ function ProjectRow({ project, index }) {
               src={project.image}
               alt={`Captura de ${project.name}`}
               loading="lazy"
-              className="h-14 w-20 rounded-[0.75rem] border border-white/10 object-cover"
+              className="h-14 w-20 rounded-[0.75rem] border border-white/10 object-cover transition duration-500 group-hover:-translate-y-0.5 group-hover:border-white/20 group-hover:brightness-110 sm:h-16 sm:w-28 md:h-20 md:w-32"
             />
           ) : (
             <span
-              className={`flex h-12 w-12 items-center justify-center rounded-[0.95rem] border border-white/10 bg-white/[0.045] transition duration-500 group-hover:border-white/20 group-hover:bg-white/[0.08] ${meta.tone} ${meta.toneHover}`}
+              className={`flex h-12 w-12 items-center justify-center rounded-[0.95rem] border border-white/10 bg-white/[0.045] transition duration-500 group-hover:-translate-y-0.5 group-hover:border-white/20 group-hover:bg-white/[0.08] ${meta.tone} ${meta.toneHover}`}
             >
-              <Icon className="h-5 w-5" />
+              <Icon className="h-5 w-5 transition-transform duration-500 group-hover:scale-105" />
             </span>
           )}
         </div>
 
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <h3 className="font-display text-[1.5rem] leading-tight text-white transition-transform duration-500 group-hover:translate-x-1 sm:text-[1.7rem] md:text-[1.9rem]">
+            <h3 className="font-display text-[1.38rem] leading-tight text-white transition-transform duration-500 group-hover:translate-x-1 sm:text-[1.7rem] md:text-[1.9rem]">
               {project.name}
             </h3>
             <span className="text-[0.8rem] tabular-nums text-slate-500">{project.year}</span>
           </div>
 
-          <p className="mt-2 max-w-[54ch] text-[0.95rem] leading-7 text-slate-300/[0.78]">
+          <p className="mt-2 max-w-[54ch] text-[0.93rem] leading-7 text-slate-300/[0.78] sm:text-[0.95rem]">
             {project.description}
           </p>
 
@@ -112,10 +113,10 @@ function ProjectRow({ project, index }) {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-[0.82rem] font-semibold text-slate-100 transition duration-300 hover:border-white/25 hover:bg-white/[0.09]"
+                  className="group/link inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-[0.82rem] font-semibold text-slate-100 transition duration-500 hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.09]"
                 >
                   {link.label}
-                  <IconComponent className="h-4 w-4" />
+                  <IconComponent className="h-4 w-4 transition-transform duration-500 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                 </a>
               )
             })

@@ -118,7 +118,7 @@ function Navbar() {
   // contenido de la página por encima de ella.
   const surfaceClassName = isScrolled
     ? 'border-white/[0.14] bg-slate-950/[0.72] shadow-[0_18px_44px_rgba(2,6,23,0.42)] backdrop-blur-2xl'
-    : 'border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]'
+    : 'border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-md'
 
   return (
     <>
@@ -145,7 +145,7 @@ function Navbar() {
 
       <nav className="relative z-10 mx-auto flex min-h-14 w-full max-w-7xl items-center px-5 py-1.5 sm:px-8 lg:px-14">
         <div
-          className={`absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border p-1.5 transition-all duration-300 md:flex ${surfaceClassName}`}
+          className={`absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border p-1.5 transition-all duration-700 ease-out md:flex ${surfaceClassName}`}
         >
           {navItems.map((item) => {
             const isActive = activeSection === item.href
@@ -155,7 +155,7 @@ function Navbar() {
                 key={item.href}
                 href={item.href}
                 aria-current={isActive ? 'page' : undefined}
-                className={`rounded-full px-4 py-2 text-[0.92rem] transition duration-300 ${
+                className={`rounded-full px-4 py-2 text-[0.92rem] transition duration-500 ${
                   isActive
                     ? 'bg-white/10 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]'
                     : 'text-slate-300 hover:bg-white/[0.08] hover:text-white'
@@ -169,7 +169,7 @@ function Navbar() {
 
         <button
           type="button"
-          className={`ml-auto inline-flex rounded-full border p-2.5 text-slate-100 transition-all duration-300 hover:bg-white/10 md:hidden ${surfaceClassName}`}
+          className={`ml-auto inline-flex rounded-full border p-2.5 text-slate-100 transition-all duration-700 ease-out hover:bg-white/10 md:hidden ${surfaceClassName}`}
           onClick={() => setIsOpen((open) => !open)}
           aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={isOpen}

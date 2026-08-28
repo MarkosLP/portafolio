@@ -11,9 +11,17 @@ const serviceIcons = {
 
 function ServicesSection() {
   const MotionDiv = motion.div
+  const MotionSection = motion.section
 
   return (
-    <section id="servicios" className="relative scroll-mt-24">
+    <MotionSection
+      id="servicios"
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.22 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="relative scroll-mt-24"
+    >
       <div className="absolute left-1/2 top-0 -z-10 h-full w-screen -translate-x-1/2 bg-[radial-gradient(circle_at_72%_30%,rgba(125,211,252,0.08),transparent_30%)]" />
       <div className="flex flex-col gap-9">
         <SectionHeading
@@ -31,15 +39,16 @@ function ServicesSection() {
                 key={title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.42, delay: index * 0.06 }}
-                className="flex flex-col rounded-[1.35rem] border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_40px_rgba(2,6,23,0.12)] backdrop-blur-xl"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.42, delay: index * 0.06 }}
+                whileHover={{ y: -2 }}
+                className="flex flex-col rounded-[1.35rem] border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_40px_rgba(2,6,23,0.12)] backdrop-blur-xl transition-colors duration-500 hover:border-white/15 hover:bg-white/[0.06]"
               >
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.9rem] border border-sky-300/15 bg-sky-300/10 text-sky-200">
                   {IconComponent ? <IconComponent className="h-5 w-5" /> : null}
                 </div>
                 <h3 className="mt-4 font-display text-[1.18rem] text-white">{title}</h3>
-                <p className="mb-5 mt-2 text-[0.95rem] leading-7 text-slate-300/[0.82]">{text}</p>
+                <p className="mb-5 mt-2 text-[0.93rem] leading-7 text-slate-300/[0.82] sm:text-[0.95rem]">{text}</p>
                 <div className="mt-auto border-t border-white/[0.06] pt-3">
                   <p className="text-[0.68rem] uppercase tracking-[0.18em] text-sky-100/[0.38]">
                     Proyecto
@@ -51,7 +60,7 @@ function ServicesSection() {
           })}
         </div>
       </div>
-    </section>
+    </MotionSection>
   )
 }
 

@@ -1,4 +1,5 @@
 import weben1minShot from '../assets/weben1min.jpg'
+import walloShot from '../assets/wallo.png'
 
 export const projects = [
   {
@@ -19,7 +20,7 @@ export const projects = [
     description:
       'Tienda comercial de aplicaciones de IA, enfocada en presentar herramientas, categorías y casos de uso de forma clara.',
     technologies: ['React', 'Tailwind CSS', 'IA aplicada', 'Lucide React'],
-    image: null,
+    image: walloShot,
     visual: 'store',
     demoUrl: null,
     repoUrl: null,

@@ -44,13 +44,13 @@ function Hero() {
   return (
     <section
       id="inicio"
-      className="grid min-h-[calc(86dvh-7rem)] grid-cols-1 items-center gap-9 pb-2 pt-6 md:min-h-[calc(82dvh-7rem)] md:grid-cols-[minmax(0,1fr)_280px] md:gap-12 md:pt-10 lg:grid-cols-[minmax(0,1fr)_340px] xl:gap-16"
+      className="grid min-h-[calc(84dvh-7rem)] grid-cols-1 items-center gap-8 pb-4 pt-4 sm:gap-9 md:min-h-[calc(82dvh-7rem)] md:grid-cols-[minmax(0,1fr)_280px] md:gap-12 md:pt-10 lg:grid-cols-[minmax(0,1fr)_340px] xl:gap-16"
     >
       <MotionDiv
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className="order-2 mx-auto w-full max-w-[250px] md:order-2 md:max-w-[280px] lg:max-w-[330px]"
+        className="order-2 mx-auto w-full max-w-[232px] sm:max-w-[250px] md:order-2 md:max-w-[280px] lg:max-w-[330px]"
       >
         <div className="ai-portrait relative">
           <div className="relative rounded-[1.8rem] border border-white/10 bg-slate-950/35 shadow-[0_28px_70px_rgba(2,6,23,0.28)]">
@@ -72,7 +72,7 @@ function Hero() {
               <div className="absolute bottom-6 left-6 right-6 z-10">
                 {/* Barra unica segmentada: tres botones sueltos dejaban el icono
                     ocupando un 8% del area y se leian vacios. */}
-                <div className="flex overflow-hidden rounded-[1rem] border border-white/[0.12] bg-slate-950/[0.42] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
+                <div className="flex overflow-hidden rounded-[1rem] border border-white/[0.14] bg-slate-950/[0.48] shadow-[0_18px_38px_rgba(2,6,23,0.24),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition duration-500 hover:border-white/20 hover:bg-slate-950/[0.56]">
                   {portraitLinks.map((portraitLink, index) => {
                     const IconComponent = portraitLink.icon
                     const { label, link, brand } = portraitLink
@@ -92,7 +92,7 @@ function Hero() {
                       index > 0 ? 'border-l border-white/10' : ''
                     } ${brandTone[brand]} ${
                       isActive
-                        ? `hover:bg-white/[0.06] ${brandHover[brand]}`
+                        ? `group/avatar-link relative hover:bg-white/[0.075] focus-visible:z-10 focus-visible:bg-white/[0.08] ${brandHover[brand]}`
                         : 'cursor-default opacity-55'
                     }`
 
@@ -114,7 +114,10 @@ function Hero() {
                         title={label}
                         className={className}
                       >
-                        {createElement(IconComponent, { className: 'h-5 w-5' })}
+                        {createElement(IconComponent, {
+                          className:
+                            'h-5 w-5 transition duration-300 group-hover/avatar-link:-translate-y-0.5 group-hover/avatar-link:scale-105',
+                        })}
                       </a>
                     )
                   })}
@@ -145,7 +148,7 @@ function Hero() {
             </p>
           </div>
 
-          <h1 className="mt-6 max-w-[15ch] break-words font-display text-[2.9rem] leading-[1.02] text-white sm:text-[3.9rem] md:text-[4.2rem] lg:text-[5rem]">
+          <h1 className="mt-5 max-w-[15ch] break-words font-display text-[2.65rem] leading-[1.03] text-white sm:mt-6 sm:text-[3.9rem] md:text-[4.2rem] lg:text-[5rem]">
             {lead}
             <span className="bg-gradient-to-br from-white via-sky-100 to-sky-300/70 bg-clip-text text-transparent">
               {accent}
@@ -153,7 +156,7 @@ function Hero() {
             {trail}
           </h1>
 
-          <p className="mt-7 max-w-[36rem] break-words text-[1rem] leading-8 text-slate-200/[0.88] sm:text-[1.06rem]">
+          <p className="mt-6 max-w-[36rem] break-words text-[1rem] leading-7 text-slate-200/[0.88] sm:mt-7 sm:text-[1.06rem] sm:leading-8">
             {profile.intro}
           </p>
 
@@ -166,25 +169,25 @@ function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 flex flex-col gap-3 sm:flex-row"
+          className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row"
         >
           <motion.a
             href="#proyectos"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.99 }}
-            className="inline-flex min-w-[12rem] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-white to-sky-100 px-7 py-3.5 text-sm font-semibold text-slate-950 shadow-[0_18px_40px_rgba(125,211,252,0.16)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_52px_rgba(125,211,252,0.2)]"
+            className="group/button inline-flex w-full min-w-[12rem] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-white to-sky-100 px-7 py-3.5 text-sm font-semibold text-slate-950 shadow-[0_18px_40px_rgba(125,211,252,0.16)] transition duration-500 hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_24px_52px_rgba(125,211,252,0.2)] sm:w-auto"
           >
             Ver proyectos
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover/button:translate-x-0.5" />
           </motion.a>
           <motion.a
             href={emailHref}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.99 }}
-            className="inline-flex min-w-[12rem] items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-7 py-3.5 text-sm font-semibold text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.08]"
+            className="group/button inline-flex w-full min-w-[12rem] items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-7 py-3.5 text-sm font-semibold text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition duration-500 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-[0_18px_42px_rgba(15,23,42,0.18)] sm:w-auto"
           >
             Escríbeme
-            <Mail className="h-4 w-4" />
+            <Mail className="h-4 w-4 transition-transform duration-500 group-hover/button:-translate-y-0.5" />
           </motion.a>
         </MotionDiv>
       </MotionDiv>
