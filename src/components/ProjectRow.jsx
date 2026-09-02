@@ -1,5 +1,6 @@
-import { ArrowUpRight, CalendarDays, Github, Globe2, Store } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { ArrowUpRight, CalendarDays, Github, Globe2, Store, X, ZoomIn } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 // Cada proyecto tiene un tono propio para que las filas no se lean iguales en
 // reposo. El acento ya existía, pero solo aparecía como hairline al hacer hover.
@@ -28,14 +29,31 @@ function ProjectRow({ project, index }) {
   const MotionArticle = motion.article
   const meta = visualMeta[project.visual] ?? visualMeta.web
   const Icon = meta.icon
+  const [isImageOpen, setIsImageOpen] = useState(false)
 
   const links = [
     project.demoUrl && { key: 'demo', href: project.demoUrl, label: 'Ver proyecto', icon: ArrowUpRight },
     project.repoUrl && { key: 'repo', href: project.repoUrl, label: 'Código', icon: Github },
   ].filter(Boolean)
 
+  useEffect(() => {
+    if (!isImageOpen) {
+      return undefined
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsImageOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isImageOpen])
+
   return (
-    <MotionArticle
+    <>
+      <MotionArticle
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -61,12 +79,22 @@ function ProjectRow({ project, index }) {
           </span>
 
           {project.image ? (
-            <img
-              src={project.image}
-              alt={`Captura de ${project.name}`}
-              loading="lazy"
-              className="h-14 w-20 rounded-[0.75rem] border border-white/10 object-cover transition duration-500 group-hover:-translate-y-0.5 group-hover:border-white/20 group-hover:brightness-110 sm:h-16 sm:w-28 md:h-20 md:w-32"
-            />
+            <button
+              type="button"
+              onClick={() => setIsImageOpen(true)}
+              className="group/image relative shrink-0 rounded-[0.75rem] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-0.5 hover:border-white/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300/80"
+              aria-label={`Ampliar captura de ${project.name}`}
+            >
+              <img
+                src={project.image}
+                alt={`Captura de ${project.name}`}
+                loading="lazy"
+                className="h-14 w-20 rounded-[0.75rem] object-cover transition duration-500 group-hover:brightness-110 group-hover/image:scale-[1.02] sm:h-16 sm:w-28 md:h-20 md:w-32"
+              />
+              <span className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-[0.75rem] bg-slate-950/0 text-white opacity-0 transition duration-300 group-hover/image:bg-slate-950/30 group-hover/image:opacity-100">
+                <ZoomIn className="h-4 w-4" />
+              </span>
+            </button>
           ) : (
             <span
               className={`flex h-12 w-12 items-center justify-center rounded-[0.95rem] border border-white/10 bg-white/[0.045] transition duration-500 group-hover:-translate-y-0.5 group-hover:border-white/20 group-hover:bg-white/[0.08] ${meta.tone} ${meta.toneHover}`}
@@ -128,7 +156,47 @@ function ProjectRow({ project, index }) {
           )}
         </div>
       </div>
-    </MotionArticle>
+      </MotionArticle>
+
+      <AnimatePresence>
+        {isImageOpen && project.image && (
+          <motion.div
+            className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-slate-950/80 px-4 py-6 backdrop-blur-md sm:px-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+            onClick={() => setIsImageOpen(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Captura ampliada de ${project.name}`}
+          >
+            <motion.div
+              className="relative max-h-full w-full max-w-5xl cursor-default"
+              initial={{ opacity: 0, scale: 0.94, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 10 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <img
+                src={project.image}
+                alt={`Captura ampliada de ${project.name}`}
+                className="max-h-[82vh] w-full rounded-[0.9rem] border border-white/15 object-contain shadow-2xl shadow-black/45"
+              />
+              <button
+                type="button"
+                onClick={() => setIsImageOpen(false)}
+                className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-slate-950/70 text-white transition duration-300 hover:bg-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300/80"
+                aria-label="Cerrar captura ampliada"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 
