@@ -1,4 +1,4 @@
-import weben1minShot from '../assets/weben1min.jpg'
+import weben1minShot from '../assets/weben1min.png'
 import walloShot from '../assets/wallo.png'
 import generadorHorariosShot from '../assets/portfolio-generador-horarios.png'
 
