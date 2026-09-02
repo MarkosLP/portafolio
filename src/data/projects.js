@@ -1,5 +1,6 @@
 import weben1minShot from '../assets/weben1min.jpg'
 import walloShot from '../assets/wallo.png'
+import generadorHorariosShot from '../assets/portfolio-generador-horarios.png'
 
 export const projects = [
   {
@@ -32,7 +33,7 @@ export const projects = [
     description:
       'Aplicación para generar y gestionar turnos y horarios de trabajo, con foco en organización diaria y control rápido del equipo.',
     technologies: ['React', 'Tailwind CSS', 'Gestión interna', 'Calendario'],
-    image: null,
+    image: generadorHorariosShot,
     visual: 'shifts',
     demoUrl: null,
     repoUrl: null,
