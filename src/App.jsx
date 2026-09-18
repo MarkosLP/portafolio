@@ -49,22 +49,21 @@ function App() {
             <div
               className="site-backdrop-frame"
               style={{ backgroundImage: `url(${backgroundPpal})` }}
-            >
-              <div className="site-window-lights hidden md:block" />
-            </div>
+            />
           </Motion.div>
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.05)_0%,rgba(2,6,23,0.08)_16%,rgba(2,6,23,0.16)_34%,rgba(2,6,23,0.32)_56%,rgba(2,6,23,0.54)_76%,rgba(2,6,23,0.76)_90%,#02050b_100%)]" />
           {/* Scrim lateral: da contraste al texto del hero sin apagar la foto entera. */}
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,8,18,0.72)_0%,rgba(4,8,18,0.46)_34%,rgba(4,8,18,0.12)_58%,transparent_78%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.05),transparent_26%)]" />
 
-          {/* Luces del altavoz. Mismo anclaje que la foto, pero por encima de los
-              scrims para que no las apague el degradado. */}
+          {/* Luces de la escena: lámpara y altavoz. Mismo anclaje que la foto,
+              pero por encima de los scrims para que no las apague el degradado. */}
           <Motion.div
             style={{ y: backdropY }}
             className="absolute inset-x-0 top-[-5rem] h-[66rem]"
           >
             <div className="site-backdrop-frame">
+              <div className="site-lamp-cone" aria-hidden="true" />
               <div className="site-speaker hidden md:block" aria-hidden="true">
                 <i />
               </div>
@@ -78,11 +77,11 @@ function App() {
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0)_0%,rgba(2,6,23,0.06)_18%,rgba(2,6,23,0.14)_38%,rgba(2,6,23,0.3)_62%,rgba(2,6,23,0.56)_82%,rgba(2,6,23,0.82)_100%)]" />
         </div>
-        <div className="absolute inset-x-0 top-[54rem] h-[70rem] bg-[linear-gradient(180deg,rgba(11,18,32,0)_0%,rgba(11,18,32,0.34)_20%,rgba(12,20,35,0.72)_52%,rgba(10,17,30,0.96)_100%)]" />
-        <div className="absolute left-1/2 top-[36rem] h-[14rem] w-[42rem] -translate-x-1/2 rounded-full bg-sky-200/5 blur-[150px]" />
-        <div className="absolute right-[8%] top-[62rem] h-[16rem] w-[26rem] rounded-full bg-cyan-200/5 blur-[180px]" />
-        <div className="site-lamp-cone absolute left-[-1.5rem] top-[7.5rem] h-[18rem] w-[22rem] sm:left-[1.8rem] sm:top-[9.4rem]" />
-        <div className="absolute left-1/2 top-[88rem] h-[18rem] w-[40rem] -translate-x-1/2 rounded-full bg-white/[0.035] blur-[180px]" />
+        {/* Wash inferior. Las paradas van en rem para que la transición ocupe el
+            mismo tramo de siempre, y `bottom-0` la prolonga hasta el final del
+            documento, crezca lo que crezca el contenido. Los glows puntuales ya
+            no viven aquí: cada sección lleva el suyo. */}
+        <div className="absolute inset-x-0 bottom-0 top-[54rem] bg-[linear-gradient(180deg,rgba(11,18,32,0)_0rem,rgba(11,18,32,0.34)_14rem,rgba(12,20,35,0.72)_36rem,rgba(10,17,30,0.96)_70rem)]" />
         <div className="site-vignette absolute inset-0" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
